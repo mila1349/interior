@@ -1,0 +1,233 @@
+*{
+    box-sizing: border-box;
+    padding: 0;
+    margin: 0;
+}
+
+/*! locomotive-scroll v4.1.3 | MIT License | https://github.com/locomotivemtl/locomotive-scroll */
+html.has-scroll-smooth {
+    overflow: hidden;
+  }
+  
+  html.has-scroll-dragging {
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+  }
+  
+  .has-scroll-smooth body {
+    overflow: hidden;
+  }
+  
+  .has-scroll-smooth [data-scroll-container] {
+    min-height: 100vh;
+  }
+  
+  [data-scroll-direction="horizontal"] [data-scroll-container] {
+    height: 100vh;
+    display: inline-block;
+    white-space: nowrap;
+  }
+  
+  [data-scroll-direction="horizontal"] [data-scroll-section] {
+    display: inline-block;
+    vertical-align: top;
+    white-space: nowrap;
+    height: 100%;
+  }
+  
+  .c-scrollbar {
+    position: absolute;
+    right: 0;
+    top: 0;
+    width: 11px;
+    height: 100%;
+    transform-origin: center right;
+    transition: transform 0.3s, opacity 0.3s;
+    opacity: 0;
+  }
+  .c-scrollbar:hover {
+    transform: scaleX(1.45);
+  }
+  .c-scrollbar:hover,
+  .has-scroll-scrolling .c-scrollbar,
+  .has-scroll-dragging .c-scrollbar {
+    opacity: 1;
+  }
+  [data-scroll-direction="horizontal"] .c-scrollbar {
+    width: 100%;
+    height: 10px;
+    top: auto;
+    bottom: 0;
+    transform: scaleY(1);
+  }
+  [data-scroll-direction="horizontal"] .c-scrollbar:hover {
+    transform: scaleY(1.3);
+  }
+  
+  .c-scrollbar_thumb {
+    position: absolute;
+    top: 0;
+    right: 0;
+    background-color: black;
+    opacity: 0.5;
+    width: 7px;
+    border-radius: 10px;
+    margin: 2px;
+    cursor: -webkit-grab;
+    cursor: grab;
+  }
+  .has-scroll-dragging .c-scrollbar_thumb {
+    cursor: -webkit-grabbing;
+    cursor: grabbing;
+  }
+  [data-scroll-direction="horizontal"] .c-scrollbar_thumb {
+    right: auto;
+    bottom: 0;
+  }
+  
+
+$titleFont : 'Prata', serif;
+$bodyFont : 'Raleway', sans-serif;
+$primary-color : #232323;
+$secondary-color: #B7B7A4;
+
+h1{
+    font-family: $titleFont;
+    // font-size: 60px;
+    font-size: calc(40px + (60 - 40) * ((100vw - 320px) / (1600 - 320)));
+    color: $secondary-color;
+    font-weight: 500;
+    -webkit-font-smoothing: antialiased;
+    box-sizing: border-box;
+}
+h3{
+    font-family: $bodyFont;
+    // font-size: 16px;
+    color: #fff;
+    font-weight: lighter;
+    line-height: 24px;
+
+    font-size: calc(12px + (16 - 12) * ((100vw - 360px) / (1600 - 360)));
+}
+
+.slide-up{
+  line-height: 20px;
+}
+h2{
+    font-family: $bodyFont;
+    // font-size: 20px;
+    font-size: calc(12px + (20 - 12) * ((100vw - 320px) / (1600 - 320)));
+}
+h4{
+    font-family: $titleFont;
+    // font-size: 140px;
+    font-size: calc(40px + (150 - 40) * ((100vw - 320px) / (1600 - 320)));
+    font-weight: lighter;
+}
+h5{
+    // font-size: 70px;
+    // font-weight: lighter;
+    font-family: $bodyFont;
+    font-weight: 300;
+    font-size: calc(40px + (70 - 40) * ((100vw - 320px) / (1600 - 320)));
+}
+
+body{
+    background: $primary-color;
+}
+
+@mixin center($x) {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: $x;
+}
+
+.navbar{
+    padding: 2rem 0;
+    width: 5%;
+    position: sticky;
+    top: 0;
+    left: 0;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    height: 100%;
+    border-right: 1px solid $secondary-color;
+    z-index: 100;
+    section{
+        @include center(column);
+        .logo{
+            width: 60%;
+        }
+        .social{
+            margin-top: 2rem;
+        }
+    }
+
+    @media only screen and (max-width: 670px) {
+      position: fixed;
+      width: 100%;
+      height: 8%;
+      padding: 1rem 0;
+      flex-direction: row;
+      section{
+        flex-direction: row;
+        .logo{
+          width: 24px;
+          margin-left: 2rem;
+        }
+        .social{
+            width: 20px;
+            margin-top: 0 ;
+            margin-right: 2rem;
+        }
+      }
+    }
+
+    @media only screen and (max-width: 360px) {
+      padding: 1rem 0;
+      section{
+      .logo{
+        margin-left: 1rem;
+      }
+      .social{
+        margin-right: 1rem;
+      }}
+    }
+}
+.btn{
+    width: 64px;
+    height: 64px;
+    border-radius: 50%;
+    background: $primary-color;
+    @include center(row);
+    cursor: pointer;
+    img{
+        width: 60%;
+    }
+    
+}
+
+.text-item{
+  display: inline-block;
+  transform-origin: 0 0;
+}
+
+
+//in view class
+.slide-right{
+  transform: translateX(50%);
+}
+
+.overlay-slide{
+  width:110%;
+  height:120%;
+  background:$primary-color;
+  position:absolute;
+  top:-3;
+  left:-3;
+  z-index:100
+}
